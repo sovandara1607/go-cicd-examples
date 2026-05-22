@@ -103,12 +103,12 @@ jobs:
       - name: Build and Push Image
         uses: docker/build-push-action@v7
         with: 
-          context:
+          context: .
           file: ./Dockerfile
           push: true
           tags: |
             gitea.entervise.net/${{ steps.env-vars.outputs.lowercase_repo }}:${{ steps.env-vars.outputs.clean_tag }}
             gitea.entervise.net/${{ steps.env-vars.outputs.lowercase_repo }}:latest
-          cache-form: type=gha
-          cache-to: type=gha,mode=max
+          cache-from: type=gha
+          cache-to: type=gha
 
